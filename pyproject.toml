@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "super-simple-stock-market"
+version = "0.1.0"
+description = "Take Home Assignment for Lead SWE @ JPM"
+authors = ["izu-stanley"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pydantic = "^2.10.6"
+typer = "^0.15.2"
+pytz = "^2025.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
