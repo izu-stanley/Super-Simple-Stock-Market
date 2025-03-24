@@ -30,6 +30,7 @@ jobs:
       - name: Run Tests
         run: |
           echo "Current working directory: $(pwd)"
+          ls -ltrah
           poetry run pytest
 
       - name: Build Wheel
