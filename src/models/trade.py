@@ -3,7 +3,7 @@ from typing import Optional
 import uuid
 from pydantic import BaseModel, field_validator, Field
 
-from src.models.side import Side
+from src.models.trade_side import TradeSide
 
 
 class Trade(BaseModel):
@@ -15,7 +15,7 @@ class Trade(BaseModel):
                                           default_factory=uuid.uuid4)
     timestamp: datetime = Field(description="Time of trade")
     quantity: int = Field(description="Quantity of trade")
-    side: Side = Field(description="Side of trade. Should be 'buy' or 'sell'")
+    side: TradeSide = Field(description="Side of trade. Should be 'buy' or 'sell'")
     trade_price: float = Field(description="Price of trade")
 
     @field_validator('side', mode='before')

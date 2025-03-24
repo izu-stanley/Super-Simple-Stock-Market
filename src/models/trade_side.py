@@ -1,6 +1,6 @@
 from enum import Enum
 
-class Side(str, Enum):
+class TradeSide(str, Enum):
     """
     Enum class containing all possible side types.
     """

@@ -6,7 +6,7 @@ from typing import Optional, Dict, List
 import pytz
 from pydantic import BaseModel, Field
 
-from src.models.side import Side
+from src.models.trade_side import TradeSide
 from src.models.stock import Stock
 from src.models.trade import Trade
 
@@ -37,7 +37,7 @@ class StockMarket(BaseModel):
 
         return list(self.stocks.keys())
 
-    def record_trade(self, symbol: str, quantity: int, trade_price: float, side: Side) \
+    def record_trade(self, symbol: str, quantity: int, trade_price: float, side: TradeSide) \
             -> None:
         """Record a trade for the given stock symbol."""
         if symbol not in self.stocks:
