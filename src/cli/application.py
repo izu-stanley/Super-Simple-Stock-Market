@@ -13,7 +13,7 @@ def interactive_menu() -> None:
     market = set_up_stock_market()
 
     while True:
-        typer.echo("\nSuper Simple Stock Market Menu:")
+        typer.echo("\nSimple Stock Market Menu:")
         typer.echo("1. Calculate Dividend Yield")
         typer.echo("2. Calculate P/E Ratio")
         typer.echo("3. Record a Trade")
