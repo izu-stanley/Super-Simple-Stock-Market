@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "${HOME}/.local/bin" >> $GITHUB_PATH
+
+      - name: Install Dependencies
+        run: poetry install
+
+      - name: Set PYTHONPATH
+        run: echo "PYTHONPATH=$PWD/src:$PYTHONPATH" >> $GITHUB_ENV
+
+      - name: Run Tests
+        run: |
+          echo "Current working directory: $(pwd)"
+          poetry run pytest
+
+      - name: Build Wheel
+        run: poetry build -f wheel
+
+      - name: Upload Wheel Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheel
+          path: dist/*.whl
