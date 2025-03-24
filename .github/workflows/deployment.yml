@@ -28,9 +28,9 @@ jobs:
         run: poetry install
 
       - name: Run Tests
-        env:
-          PYTHONPATH: ./src
-        run: poetry run pytest
+        run: |
+          echo "Current working directory: $(pwd)"
+          poetry run pytest
 
       - name: Build Wheel
         run: poetry build -f wheel
